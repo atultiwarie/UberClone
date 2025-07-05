@@ -27,56 +27,54 @@ function SeePrice() {
       {/* NavBar */}
 
       <section>
-        <div className='flex justify-between px-10 mt-2.5'>
-
-          <div className='flex gap-20 items-center text-center'>
-
+        <div className="flex justify-between px-10 mt-2.5">
+          <div className="flex gap-20 items-center text-center">
             <div className="flex flex-wrap gap-3 items-center">
               <h1 className="text-3xl font-semibold cursor-pointer">
-                <Link to='/'>Uber</Link>
+                <Link to="/">Uber</Link>
               </h1>
             </div>
 
             <div className="flex gap-10 mt-5">
-
               {/* Ride (with underline) */}
               <div className="flex items-center gap-2.5 border-b-4 border-black pb-1 cursor-pointer">
                 <FaCar className="text-2xl" />
-                <h3 className="text-xl font-semibold"><Link to='/RideSection/Ride'>Ride</Link> </h3>
+                <h3 className="text-xl font-semibold">
+                  <Link to="/RideSection/Ride">Ride</Link>{" "}
+                </h3>
               </div>
 
               {/* Rentals */}
               <div className="flex items-center gap-2.5 cursor-pointer">
                 <MdOutlineCarRental className="text-2xl" />
-                <h3 className="text-xl font-semibold"><Link to='/RideSection/Rentals'>Rentals</Link> </h3>
+                <h3 className="text-xl font-semibold">
+                  <Link to="/RideSection/Rentals">Rentals</Link>{" "}
+                </h3>
               </div>
 
               {/* Courier */}
               <div className="flex items-center gap-2.5 cursor-pointer">
                 <BsBoxSeamFill className="text-2xl" />
-                <h3 className="text-xl font-semibold"><Link to='/RideSection/Courier'>Courier</Link></h3>
+                <h3 className="text-xl font-semibold">
+                  <Link to="/RideSection/Courier">Courier</Link>
+                </h3>
               </div>
-
             </div>
-
           </div>
-
 
           <div>
-            <div className='flex items-center gap-3  bg-gray-100 p-2 rounded-full'>
-              <ul className='text-xl'><SiGoogleforms /></ul>
-              <h3 className='text-lg font-semibold'>Activity</h3>
+            <div className="flex items-center gap-3  bg-gray-100 p-2 rounded-full">
+              <ul className="text-xl">
+                <SiGoogleforms />
+              </ul>
+              <h3 className="text-lg font-semibold">Activity</h3>
             </div>
-
           </div>
-
         </div>
       </section>
       <hr className="border-4 border-gray-300 " />
 
-
       <div className="flex flex-col lg:flex-row gap-6 p-6">
-
         {/* Ride Request Form */}
         <div className="border-4 border-gray-300 p-4 rounded-xl w-full max-w-sm w-400px">
           <h1 className="text-2xl font-semibold">Get a ride</h1>
@@ -121,7 +119,9 @@ function SeePrice() {
 
         {/* Google Map */}
         <div className="flex-1 min-w-[700px]">
-          <LoadScript googleMapsApiKey="AIzaSyBpgZ65NiewGg7Tqr7uz3DknfOx9Vdpls8">
+          <LoadScript
+            googleMapsApiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
+          >
             <GoogleMap
               mapContainerStyle={containerStyle}
               center={center}
@@ -132,9 +132,8 @@ function SeePrice() {
           </LoadScript>
         </div>
       </div>
-
     </>
-  )
+  );
 }
 
 export default SeePrice
