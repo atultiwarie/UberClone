@@ -1,27 +1,25 @@
-import React from 'react'
-import { FaGoogle, FaApple } from 'react-icons/fa';
-import { IoQrCodeSharp } from 'react-icons/io5';
-import { Link } from 'react-router';
+import React from "react";
+import { FaGoogle, FaApple } from "react-icons/fa";
+import { IoQrCodeSharp } from "react-icons/io5";
+import { Link } from "react-router";
 
 function Login() {
   return (
     <>
       {/* Navbar */}
-      <section className='navbar'>
-
-
-
-
+      <section className="navbar">
         {/* Left Side */}
-        <div className="flex flex-wrap gap-3 items-center p-6 bg-black text-white">
-          <h1 className="text-3xl font-normal cursor-pointer pl-10"><Link to='/'>Uber</Link> </h1>
+        <div className="flex flex-wrap gap-3 items-center px-4 sm:px-6 py-6 bg-black text-white">
+          <h1 className="text-3xl font-normal cursor-pointer">
+            <Link to="/">Uber</Link>{" "}
+          </h1>
         </div>
         <div />
       </section>
 
       {/* Page */}
-      <div className="  flex items-center justify-center  px-4">
-        <div className="  p-8  w-full max-w-md">
+      <div className="flex items-center justify-center px-4 py-10">
+        <div className="p-6 sm:p-8 w-full max-w-md">
           <h1 className="text-2xl font-semibold mb-4 ">
             What's your phone number or email?
           </h1>
@@ -63,15 +61,15 @@ function Login() {
             <span>Log in with QR code</span>
           </button>
 
-          <p className=' text-gray-500 mt-5'>
-            By proceeding, you consent to get calls, WhatsApp or SMS/RCS messages, including by automated means, from Uber and its affiliates to the number provided
+          <p className=" text-gray-500 mt-5">
+            By proceeding, you consent to get calls, WhatsApp or SMS/RCS
+            messages, including by automated means, from Uber and its affiliates
+            to the number provided
           </p>
         </div>
-
-
       </div>
     </>
-  )
+  );
 }
 
-export default Login
+export default Login;

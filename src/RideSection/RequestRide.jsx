@@ -1,19 +1,19 @@
-import React from 'react';
+import React from "react";
 // Navbar
 import { FaCar } from "react-icons/fa";
 import { MdOutlineCarRental } from "react-icons/md";
 import { BsBoxSeamFill } from "react-icons/bs";
-import { Link } from 'react-router';
+import { Link } from "react-router";
 import { SiGoogleforms } from "react-icons/si";
 
 // ////////////////////////
 import { FaDotCircle, FaUser } from "react-icons/fa";
 import { IoAddCircle } from "react-icons/io5";
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const containerStyle = {
-  width: '100%',
-  height: '500px',
+  width: "100%",
+  height: "500px",
 };
 
 const center = {
@@ -23,64 +23,60 @@ const center = {
 
 function RequestRide() {
   return (
-
     <>
-
       {/* NavBar */}
 
       <section>
-        <div className='flex justify-between px-10 mt-2.5'>
-
-          <div className='flex gap-20 items-center text-center'>
-
+        <div className="flex flex-col lg:flex-row justify-between px-4 sm:px-6 lg:px-10 mt-2.5 gap-4">
+          <div className="flex flex-col lg:flex-row gap-4 lg:gap-20 items-start lg:items-center text-center">
             <div className="flex flex-wrap gap-3 items-center">
               <h1 className="text-3xl font-semibold cursor-pointer">
-                <Link to='/'>Uber</Link>
+                <Link to="/">Uber</Link>
               </h1>
             </div>
 
-            <div className="flex gap-10 mt-5">
-
+            <div className="flex flex-wrap gap-4 lg:gap-10 mt-2 lg:mt-5">
               {/* Ride (with underline) */}
               <div className="flex items-center gap-2.5 border-b-4 border-black pb-1 cursor-pointer">
                 <FaCar className="text-2xl" />
-                <h3 className="text-xl font-semibold"><Link to='/RideSection/Ride'>Ride</Link> </h3>
+                <h3 className="text-xl font-semibold">
+                  <Link to="/RideSection/Ride">Ride</Link>{" "}
+                </h3>
               </div>
 
               {/* Rentals */}
               <div className="flex items-center gap-2.5 cursor-pointer">
                 <MdOutlineCarRental className="text-2xl" />
-                <h3 className="text-xl font-semibold"><Link to='/RideSection/Rentals'>Rentals</Link> </h3>
+                <h3 className="text-xl font-semibold">
+                  <Link to="/RideSection/Rentals">Rentals</Link>{" "}
+                </h3>
               </div>
 
               {/* Courier */}
               <div className="flex items-center gap-2.5 cursor-pointer">
                 <BsBoxSeamFill className="text-2xl" />
-                <h3 className="text-xl font-semibold"><Link to='/RideSection/Courier'>Courier</Link></h3>
+                <h3 className="text-xl font-semibold">
+                  <Link to="/RideSection/Courier">Courier</Link>
+                </h3>
               </div>
-
             </div>
-
           </div>
-
 
           <div>
-            <div className='flex items-center gap-3  bg-gray-100 p-2 rounded-full'>
-              <ul className='text-xl'><SiGoogleforms /></ul>
-              <h3 className='text-lg font-semibold'>Activity</h3>
+            <div className="flex items-center gap-3  bg-gray-100 p-2 rounded-full">
+              <ul className="text-xl">
+                <SiGoogleforms />
+              </ul>
+              <h3 className="text-lg font-semibold">Activity</h3>
             </div>
-
           </div>
-
         </div>
       </section>
       <hr className="border-4 border-gray-300 " />
 
-
-      <div className="flex flex-col lg:flex-row gap-6 p-6">
-
+      <div className="flex flex-col lg:flex-row gap-6 p-4 sm:p-6">
         {/* Ride Request Form */}
-        <div className="border-4 border-gray-300 p-4 rounded-xl w-full max-w-sm w-400px">
+        <div className="border-4 border-gray-300 p-4 rounded-xl w-full max-w-sm">
           <h1 className="text-2xl font-semibold">Get a ride</h1>
 
           <div className="flex items-center gap-3.5 p-4 mt-5 bg-gray-200 rounded-lg">
@@ -122,7 +118,7 @@ function RequestRide() {
         </div>
 
         {/* Google Map */}
-        <div className="flex-1 min-w-[700px]">
+        <div className="flex-1 min-w-0 w-full">
           <LoadScript googleMapsApiKey="AIzaSyBpgZ65NiewGg7Tqr7uz3DknfOx9Vdpls8">
             <GoogleMap
               mapContainerStyle={containerStyle}

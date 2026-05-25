@@ -1,83 +1,49 @@
-import React from 'react'
-// Navbar
-import { FaCar } from "react-icons/fa";
-import { MdOutlineCarRental } from "react-icons/md";
-import { BsBoxSeamFill } from "react-icons/bs";
-import { Link } from 'react-router';
-import { SiGoogleforms } from "react-icons/si";
-
-// ////////////////////////
+import React, { useEffect, useState } from "react";
+import Navbar from "../Nav & Footer/ResponsiveNavbar";
 import { FaDotCircle, FaUser } from "react-icons/fa";
 import { IoAddCircle } from "react-icons/io5";
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const containerStyle = {
-  width: '100%',
-  height: '500px',
+  width: "100%",
+  height: "500px",
 };
 
-const center = {
-  lat: 37.7749,
-  lng: -122.4194,
-};
+// const center = {
+//   lat: 28.6139,
+//   lng: 77.209,
+// };
 
 function Ride() {
+    const [center, setCenter] = useState({
+      lat: 28.6139,
+      lng: 77.209,
+    });
+    useEffect(() => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setCenter({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            });
+          },
+          (error) => {
+            console.log(error);
+            alert("Location access denied");
+          },
+          {
+            enableHighAccuracy: true,
+          },
+        );
+      }
+    }, []);
   return (
     <>
-    {/* Navbar */}
-      <section>
-        <div className='flex justify-between px-10 mt-2.5'>
+      <Navbar />
 
-          <div className='flex gap-20 items-center text-center'>
-
-            <div className="flex flex-wrap gap-3 items-center">
-              <h1 className="text-3xl font-semibold cursor-pointer">
-                <Link to='/'>Uber</Link>
-              </h1>
-            </div>
-
-            <div className="flex gap-10 mt-5">
-
-              {/* Ride (with underline) */}
-              <div className="flex items-center gap-2.5 border-b-4 border-black pb-1 cursor-pointer">
-                <FaCar className="text-2xl" />
-                <h3 className="text-xl font-semibold"><Link to='/RideSection/Ride'>Ride</Link> </h3>
-              </div>
-
-              {/* Rentals */}
-              <div className="flex items-center gap-2.5 cursor-pointer">
-                <MdOutlineCarRental className="text-2xl" />
-                <h3 className="text-xl font-semibold"><Link to='/RideSection/Rentals'>Rentals</Link> </h3>
-              </div>
-
-              {/* Courier */}
-              <div className="flex items-center gap-2.5 cursor-pointer">
-                <BsBoxSeamFill className="text-2xl" />
-                <h3 className="text-xl font-semibold"><Link to='/RideSection/Courier'>Courier</Link></h3>
-              </div>
-
-            </div>
-
-          </div>
-
-
-          <div>
-            <div className='flex items-center gap-3  bg-gray-100 p-2 rounded-full'>
-              <ul className='text-xl'><SiGoogleforms /></ul>
-              <h3 className='text-lg font-semibold'>Activity</h3>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-      <hr className="border-4 border-gray-300 " />
-
-
-      <div className="flex flex-col lg:flex-row gap-6 p-6">
-
-        {/* Ride Request Form */}
-        <div className="border-4 border-gray-300 p-4 rounded-xl w-full max-w-sm w-400px">
+      <div className="flex flex-col lg:flex-row gap-6 p-4 sm:p-6">
+        <div className="border-4 border-gray-300 p-4 rounded-xl w-full max-w-sm">
           <h1 className="text-2xl font-semibold">Get a ride</h1>
 
           <div className="flex items-center gap-3.5 p-4 mt-5 bg-gray-200 rounded-lg">
@@ -89,7 +55,7 @@ function Ride() {
             />
           </div>
 
-          <div className="flex items-center gap-3.5 p-4 mt-5  bg-gray-200 rounded-lg">
+          <div className="flex items-center gap-3.5 p-4 mt-5 bg-gray-200 rounded-lg">
             <FaDotCircle className="text-xl" />
             <input
               type="text"
@@ -108,7 +74,7 @@ function Ride() {
             />
           </div>
 
-          <div className="flex items-center gap-3 p-3.5 mt-5 bg-gray-200 rounded-full w-32">
+          <div className="flex items-center gap-3 p-3.5 mt-5 bg-gray-200 rounded-full w-fit min-w-32">
             <FaUser className="text-xl" />
             <button>For me</button>
           </div>
@@ -118,13 +84,12 @@ function Ride() {
           </button>
         </div>
 
-        {/* Google Map */}
-        <div className="flex-1 min-w-[700px]">
+        <div className="flex-1 min-w-0 w-full">
           <LoadScript googleMapsApiKey="AIzaSyBpgZ65NiewGg7Tqr7uz3DknfOx9Vdpls8">
             <GoogleMap
               mapContainerStyle={containerStyle}
               center={center}
-              zoom={12}
+              zoom={15}
             >
               <Marker position={center} />
             </GoogleMap>
@@ -132,7 +97,7 @@ function Ride() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default Ride
+export default Ride;
